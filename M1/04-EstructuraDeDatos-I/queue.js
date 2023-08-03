@@ -25,15 +25,15 @@ Queue.prototype.dequeue = function () {
         return undefined;
     } else {
         const frontElement = this.fila[0];
-
-        for (let i = 0; i < this.fila.length - 1; i++) {
-            this.fila[i] = this.fila[i + 1];
+        //              2 < 2
+        for (let i = 0; i < this.fila.length - 1; i++) {//[4,1,1]
+            this.fila[i] = this.fila[i + 1];//4
         }
 
-        this.fila.length--;
+        this.fila.length--;//[4,1]
         this.count--;
 
-        return frontElement;
+        return frontElement;//5
     }
 }
 
