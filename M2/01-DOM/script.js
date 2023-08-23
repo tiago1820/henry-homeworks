@@ -1,5 +1,4 @@
 let toDoItems = [];
-console.log(toDoItems)
 
 let span = document.querySelector("#createdBy");
 span.innerHTML = span.innerHTML + " Tiago";
@@ -42,7 +41,7 @@ function displayToDos() {
     let toDoContainer = document.querySelector("#toDoContainer");
     toDoContainer.innerHTML = "";
 
-    let builds = buildToDos(toDoItems);//[]
+    let builds = buildToDos(toDoItems);//[{description:"aaasa",complete:false}]
 
     for (let i = 0; i < builds.length; i++) {
         toDoContainer.appendChild(builds[i]);
