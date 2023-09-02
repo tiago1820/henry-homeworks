@@ -43,7 +43,7 @@ $('#boton').click(() => {
 // $('#amigo').text(data.name);: Dentro de la función de devolución de llamada, se selecciona un elemento con el ID amigo y se establece su texto (text()) en el nombre del amigo que se encuentra en la propiedad name del objeto data. Esto actualiza el contenido del elemento con el nombre del amigo recuperado de la respuesta de la solicitud GET.
 
 $('#search').click(() => {
-    let id = $('#input').val();
+    const id = $('#input').val();
     $.get(`${baseUrl}/amigos/${id}`, (data) => {
         $('#amigo').text(data.name);
     })
@@ -84,7 +84,7 @@ $('#search').click(() => {
 // jQuery es una biblioteca de JavaScript ampliamente utilizada que simplifica la manipulación del DOM (Document Object Model) en páginas web y ofrece una variedad de utilidades y funciones para realizar tareas comunes en desarrollo web, como manipulación de elementos HTML, manejo de eventos, peticiones AJAX, animaciones y mucho más.
 
 $('#delete').click(() => {
-    let id = $('#inputDelete').val();
+    const id = $('#inputDelete').val();
 
     $.ajax({
         type: 'delete',
