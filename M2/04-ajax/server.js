@@ -48,11 +48,8 @@ let amigos = [
     }
 ];
 
-app.use(express.static('.'));
 app.use(cors());
 app.use(bodyParser.json());
-
-
 
 app.get("/amigos", (req, res) => {
     res.status(200).json(amigos);
