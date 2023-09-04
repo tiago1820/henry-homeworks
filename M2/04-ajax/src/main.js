@@ -1,4 +1,4 @@
-window.BASEURL = 'http://localhost:5000';
+window.BASE_URL = 'http://localhost:5000';
 
 import {showFriends} from './functions/show.js';
 import { searchFriend } from './functions/search.js';

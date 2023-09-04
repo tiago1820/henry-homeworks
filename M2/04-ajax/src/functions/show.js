@@ -1,14 +1,14 @@
 const list = $('#lista');
 
-const createElementItems = amigo => {
-    list.append(`<li>${amigo.name}</li>`);
+const createElementItems = friend => {
+    list.append(`<li>${friend.name}</li>`);
 }
 
-const iterateFriends = data => {
-    data.forEach(createElementItems)
+const iterateFriends = friends => {
+    friends.forEach(createElementItems)
 }
 
-export const showFriends = data => {
+export const showFriends = event => {
     list.empty();
-    $.get(`${BASEURL}/amigos`, iterateFriends);
+    $.get(`${BASE_URL}/amigos`, iterateFriends);
 }
