@@ -1,8 +1,8 @@
-const showName = (data) => {
-    $('#amigo').text(data.name);
+const showName = friend => {
+    $('#amigo').text(friend.name);
 }
 
-export const searchFriend = (data) => {
+export const searchFriend = event => {
     const id = $('#input').val();
-    $.get(`${BASEURL}/amigos/${id}`, showName);
+    $.get(`${BASE_URL}/amigos/${id}`, showName);
 }
