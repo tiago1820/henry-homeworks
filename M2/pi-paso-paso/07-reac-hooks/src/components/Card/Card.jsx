@@ -48,8 +48,8 @@ const Card = (props) => {
                   <div className={styles.origin}>{origin}</div>
                </div>
             </div>
-         <div className={styles.status}>{status}</div>
          </div>
+         <div className={styles.status}>{status}</div>
       </div>
    );
 }

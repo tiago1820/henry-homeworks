@@ -25,3 +25,9 @@ export const orderCards = (order) => {
         payload: order
     }
 }
+
+export const showAllcharacters = () => {
+    return {
+        type: "SHOW_ALL",
+    }
+}
