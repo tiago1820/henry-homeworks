@@ -1,26 +1,11 @@
-import axios from "axios";
-import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import useCharacter from '../../hooks/useCharacter';
 import styles from './Detail.module.css';
 
 const Detail = () => {
-
-  const { id } = useParams();
-  const [character, setCharacter] = useState({});
-
-  useEffect(() => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-      if (data.name) {
-        setCharacter(data);
-      } else {
-        window.alert('No hay personajes con ese ID');
-      }
-    });
-    return setCharacter({});
-  }, [id]);
+  const character = useCharacter();
+  console.log(character)
 
   return (
-    // Hacer un loader en caso no exista el character
     <div className={styles.link}>
       <div className={styles.card}>
         <img className={styles.image} src={character?.image} alt='' />
@@ -38,4 +23,4 @@ const Detail = () => {
   )
 }
 
-export default Detail
+export default Detail;
