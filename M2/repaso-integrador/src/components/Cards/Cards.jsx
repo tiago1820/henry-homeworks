@@ -1,7 +1,6 @@
 import { Card } from "../../components";
 const Cards = (props) => {
     const { characters, onClose } = props;
-    console.log(characters);
 
 
     return (
@@ -12,8 +11,7 @@ const Cards = (props) => {
                         key={char.id}
                         id={char.id}
                         name={char.name}
-                        // abilities={char.status}
-                        // moves={char.species}
+                        gender={char.gender}
                         species={char.species}
                         image={char.image}
                         onClose={onClose}
