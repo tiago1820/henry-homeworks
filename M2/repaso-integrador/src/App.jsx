@@ -1,12 +1,31 @@
-import { Cards, Nav } from "./components";
-import { useState } from "react";
+import { Nav, Cards, About, Detail, Error, Form, Favorites } from "./components";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { handleCharacterData } from "./app.functions";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import PATHROUTES from "./helpers/PathRoutes.helper";
 const App = () => {
 
-	// https://pokeapi.co/api/v2/pokemon-species
-
+	const { LOGIN, HOME, ABOUT, DETAIL, FAVORITES, ERROR } = PATHROUTES;
 	const [characters, setCharacters] = useState([]);
+	const pathname = useLocation();
+	const [access, setAccess] = useState(false);
+	const navigate = useNavigate();
+
+	const EMAIL = "tiago.zdo@gmail.com";
+	const PASSWORD = "123456";
+
+	const login = (userData) => {
+		if (userData.password === PASSWORD && userData.email === EMAIL) {
+			setAccess(true);
+			navigate("/home");
+		}
+	}
+
+	const logout = () => {
+		setAccess(false);
+		navigate("/");
+	}
 
 	const onSearch = (id) => {
 		axios(`https://rickandmortyapi.com/api/character/${id}`)
@@ -38,16 +57,27 @@ const App = () => {
 		} while (isIdCharacters(id));
 
 		axios(`https://rickandmortyapi.com/api/character/${id}`)
-			.then(({data}) => {
-				console.log("char", data)
+			.then(({ data }) => {
 				handleCharacterData(data, characters, setCharacters);
 			});
 	}
 
+	useEffect(() => {
+		!access && navigate("/");
+	}, [access]);
+
+
 	return (
 		<div className="container">
-			<Nav onSearch={onSearch} getRandomChar={getRandomChar} />
-			<Cards characters={characters} onClose={onClose} />
+			{pathname !== LOGIN && <Nav onSearch={onSearch} getRandomChar={getRandomChar} logout={logout} />}
+			<Routes>
+				<Route path={LOGIN} element={<Form login={login} />} />
+				<Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
+				<Route path={ABOUT} element={<About />} />
+				<Route path={DETAIL} element={<Detail />} />
+				<Route path={FAVORITES} element={<Favorites />} />
+				<Route path={ERROR} element={<Error />} />
+			</Routes>
 		</div>
 	)
 }
